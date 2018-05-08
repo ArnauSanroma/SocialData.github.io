@@ -175,44 +175,7 @@
 				font-size: 12px;
 				line-height: 20px;
 			}
-			.dropbtn {
-			    background-color: silver;
-			    color: black;
-			    padding: 6px;
-			    font-size: 14px;
-			    border: none;
-			    cursor: pointer;
-			}
-
-			/* Dropdown button on hover & focus */
-			.dropbtn:hover, .dropbtn:focus {
-			    background-color: grey;
-			}
-
-			/* The container <div> - needed to position the dropdown content */
-			.dropdown {
-			    position: relative;
-			    display: inline-block;
-			}
-
-			/* Dropdown Content (Hidden by Default) */
-			.dropdown-content {
-			    display: none;
-			    position: absolute;
-			    background-color: #f1f1f1;
-			    min-width: 80px;
-			    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-			    z-index: 1;
-			}
-
-			/* Links inside the dropdown */
-			.dropdown-content a {
-			    color: black;
-			    padding: 5px 5px;
-			    text-decoration: none;
-			    display: block;
-			}
-
+			
 			.legend_arr {
 				display: block;
     		width:10px;
@@ -226,14 +189,6 @@
 				background: #98dafc;
 			}
 
-
-			/* Change color of dropdown links on hover */
-			.dropdown-content a:hover {background-color: silver}
-
-			/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-			.show {display:block;}
-			/* No style rules here yet */
-
 		</style>
 	</head>
 	<body>
@@ -243,7 +198,7 @@
 <div id="container">
 
 			<center>
-			<h1>U.S. flights visualization </h1>
+			<h1>U.S. Flight Visualization</h1>
 			</center>
 			<p align="justify">The visualization created for this project seeks to provide an understanding of both the general aspects and some insights of US flight data in 2008. The visualization consists of a partitioned poster with 4 different visualizations. First of all (top-left) a map of the US with the airports we have considered for the analysis: the 30 airports with more flights during all year. The airports are represented as circles that have area proportional to the number of departure flights in each specific airport. Hovering over an airport, one can see a tooltip showing the name of the airport and the number of flights in that airport. Also, when hovering, the connections of that airport appear as lines with thickness also proportional to the number of flights in the connection. The map provides more interactivity which we will present when have explained other parts of the visualization.<p>
 			<p align="justify">At the bottom we provide a timeline that shows the total number of flights per day during all year. In the timeline one can already see some insights of the data. There is a drop each Saturday, which makes sense because people usually travel Friday or Sunday, but not Saturday. Also, one can see two major drops: Christmas and September 11th, both for obvious reasons. The timeline can be brushed and the data in the map (area of circles and thickness of lines) will be updated accordingly. For speed purposes, the brush is only made effective when one stops brushing, not while brushing.</p>
