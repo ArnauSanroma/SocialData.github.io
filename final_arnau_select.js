@@ -259,8 +259,8 @@ d3.json("us-states.json", function(json) {
             one_way_connections_dataset.push({"connection":one_way_connections[i],"flights":connection_dataset[connection] + connection_dataset[reversed_connection]})
           }
 
-          airport_scale.domain([0,d3.max(values(flight_dataset))])
-          thick_scale.domain([d3.min(values(connection_dataset)),d3.max(Object.values(connection_dataset))])
+          airport_scale.domain([0,d3.max(Object.values(flight_dataset))])
+          thick_scale.domain([d3.min(Object.values(connection_dataset)),d3.max(Object.values(connection_dataset))])
 
           svg_map.selectAll("path")
              .data(json.features)
