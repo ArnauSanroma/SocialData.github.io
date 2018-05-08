@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Context</title>
+		<script type="text/javascript" src="d3.js"></script>
+		<style type="text/css">
+
+			/* Lots of new CSS rules! */
+
+			/* HTML page styles */
+
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				font-family: Helvetica, Arial, sans-serif;
+				background-color: #eee;
+				justify-content: center;
+				margin: 0 auto;
+				width: window.innerWidth;
+
+			}
+
+			#container {
+	     	margin: 10px auto 10px auto;
+				padding: 10px 10px 10px 10px;
+				background-color: white;
+				box-shadow: 0 0 20px #ccc;
+			}
+
+			h1 {
+				margin-bottom: 25px;
+				font-size: 24px;
+				font-weight: bold;
+			}
+
+			h2 {
+				margin-top: 30px;
+				margin-left: 20px;
+				font-size: 14px;
+			}
+
+			p {
+				margin-bottom: 25px;
+				font-size: 14px;
+				line-height: 18px;
+			}
+
+
+
+			#footer p {
+				margin-top: 50px;
+				margin-bottom: 0;
+				font-size: 10px;
+				line-height: 14px;
+				color: gray;
+			}
+
+			#footer p a {
+				color: gray;
+			}
+
+			/* Chart styles */
+
+			svg {
+				display: block;
+				margin-bottom: 10px;
+				background-color: white;
+			}
+
+
+			.airport_default{
+				fill: teal;
+				stroke: #001f3f;
+				stroke-width: 0.75;
+				opacity: 1;
+			}
+
+			.airport_hover{
+				stroke-width: 2;
+				opacity: 1;
+				fill: teal;
+				stroke: #001f3f;
+			}
+			.airport_click{
+				stroke-width: 2;
+				opacity: 1;
+				fill: #fae596;
+				stroke: #001f3f;
+			}
+			.line{
+				fill:none;
+				stroke:teal;
+			}
+			.line_default{
+				fill: transparent;
+			}
+			.line_visible{
+				stroke: #001f3f;
+			}
+			.line_hover{
+				stroke: #c0392b;
+				stroke-width: 3;
+			}
+			.axis {
+				font-size: 8px;
+			}
+			.arrivals {
+				fill: #b56969;
+				opacity: 1.0;
+			}
+
+			.departures {
+				fill:#98dafc;
+				opacity: 1.0;
+			}
+			.ratio_arr{
+				fill: none;
+				stroke: #b56969;
+			}
+			.ratio_dep{
+				fill: none;
+				stroke: #98dafc;
+			}
+			#airport_tooltip {
+				position: absolute;
+				width: 100px;
+				height: auto;
+				padding: 10px;
+				background-color: white;
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+				-webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+				-moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+				box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+				pointer-events: none;
+			}
+
+			#airport_tooltip.hidden {
+				display: none;
+			}
+
+			#airport_tooltip p {
+				margin: 0;
+				font-family: sans-serif;
+				font-size: 12px;
+				line-height: 20px;
+			}
+			#line_tooltip {
+				position: absolute;
+				width: 150px;
+				height: auto;
+				padding: 10px;
+				background-color: white;
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+				-webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+				-moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+				box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+				pointer-events: none;
+			}
+
+			#line_tooltip.hidden {
+				display: none;
+			}
+
+			#line_tooltip p {
+				margin: 0;
+				font-family: sans-serif;
+				font-size: 12px;
+				line-height: 20px;
+			}
+			.dropbtn {
+			    background-color: silver;
+			    color: black;
+			    padding: 6px;
+			    font-size: 14px;
+			    border: none;
+			    cursor: pointer;
+			}
+
+			/* Dropdown button on hover & focus */
+			.dropbtn:hover, .dropbtn:focus {
+			    background-color: grey;
+			}
+
+			/* The container <div> - needed to position the dropdown content */
+			.dropdown {
+			    position: relative;
+			    display: inline-block;
+			}
+
+			/* Dropdown Content (Hidden by Default) */
+			.dropdown-content {
+			    display: none;
+			    position: absolute;
+			    background-color: #f1f1f1;
+			    min-width: 80px;
+			    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			    z-index: 1;
+			}
+
+			/* Links inside the dropdown */
+			.dropdown-content a {
+			    color: black;
+			    padding: 5px 5px;
+			    text-decoration: none;
+			    display: block;
+			}
+
+			.legend_arr {
+				display: block;
+    		width:10px;
+				height:10px;
+				background: #b56969;
+			}
+			.legend_dep {
+				display: block;
+    		width:10px;
+				height:10px;
+				background: #98dafc;
+			}
+
+
+			/* Change color of dropdown links on hover */
+			.dropdown-content a:hover {background-color: silver}
+
+			/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+			.show {display:block;}
+			/* No style rules here yet */
+
+		</style>
+	</head>
+	<body>
+
+		<!-- New HTML structure and content! -->
+		<div id='center'>
+<div id="container">
+
+
+			<h1>U.S. flights visualization </h1>
+
+			<p>g;lsjdh;gldghdglkshggdsjgkjdgdflkgjfdgj dgjfsfg<p>
+
+
+
+			<p>lfjglfkxgldfkjgkdjgs;kldfjglkfjglksfjglkdjflgkjdg</p>
+
+			<p>kdslf;ksgkdjfgkjdflgkj dfj glkf jglkfjg lkfgjlfk gjflgj fkj</p>
+
+			<div id="footer">
+				<p><strong>Source:</strong> kc;ldfgkfdjgkdfjglkdfj kljgl jfklg jfklgjlfkgj lfkjglk jglfkgj</p>
+			</div>
+</div>
+
+		<div id="map" style="float:left;"></div>
+		<div id="box1" style="float:right;"></div>
+		<div id="legend1" style="float:right;"></div>
+		<div id="legend2" style="float:right;"></div>
+		<p id="legend1_text" style="height: 10px; width: 100px; margin: 0; padding: 0 ; font-family: sans-serif; font-size:12px">Arrival Delays</p>
+		<p id="legend2_text" style="height: 10px; width: 100px; margin: 0; padding: 0; font-family: sans-serif; font-size:12px">Departure Delays</p>
+		<div id="box2" style="float:right;"></div>
+		<div id="timeline" style="float:right;"></div>
+		<div id="airport_tooltip" class="hidden">
+			<p>Name: <span id="name">100</span></p>
+			<p>Flights: <span id="flights">100</span></p>
+		</div>
+		<div id="line_tooltip" class="hidden">
+			<p>Connection: <span id="connection">100</span></p>
+			<p>Flights <span id="flights1">100</span></p>
+			<p>Flights <span id="flights2">100</span></p>
+		</div>
+		<button id="select_all">Select All</button>
+		<button id="reset">Reset</button>
+		<button id = "apply">Apply</button>
+		<p id="arr_text1">Arrival delays:</p>
+		<p id="arr_text2">from</p>
+		<p id="arr_text3">to</p>
+		<p id="dep_text1">Departure delays:</p>
+		<p id="dep_text2">from</p>
+		<p id="dep_text3">to</p>
+		<select id="arr_del1" onchange="arr_del1_change()">
+			<option selected="selected" value="30 min">30 min</option>
+			<option value="60 min">60 min</option>
+			<option value="90 min">90 min</option>
+			<option value="120 min">120 min</option>
+		</select>
+		<select id="arr_del2" onchange="arr_del2_change()">
+			<option value="60 min">60 min</option>
+			<option value="90 min">90 min</option>
+			<option value="120 min">120 min</option>
+			<option selected="selected" value="> 120 min">> 120 min</option>
+		</select>
+		<select id="dep_del1" onchange="dep_del1_change()">
+			<option selected="selected" value="30 min">30 min</option>
+			<option value="60 min">60 min</option>
+			<option value="90 min">90 min</option>
+			<option value="120 min">120 min</option>
+		</select>
+		<select id="dep_del2" onchange="dep_del2_change()">
+			<option value="60 min">60 min</option>
+			<option value="90 min">90 min</option>
+			<option value="120 min">120 min</option>
+			<option selected="selected" value="> 120 min">> 120 min</option>
+		</select>
+</center>
+		<script type="text/javascript" src="final_arnau_select.js"></script>
+	</body>
+</html>
