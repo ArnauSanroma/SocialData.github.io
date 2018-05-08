@@ -417,8 +417,8 @@ d3.json("us-states.json", function(json) {
                 for (i = 0; i < arr_delays.length; i++){
                   arr_delays[i] = arr_del_view[0]*arr_delay30[i] + arr_del_view[1]*arr_delay60[i] + arr_del_view[2]*arr_delay90[i] + arr_del_view[3]*arr_delay120[i]
                   dep_delays[i] = dep_del_view[0]*dep_delay30[i] + dep_del_view[1]*dep_delay60[i] + dep_del_view[2]*dep_delay90[i] + dep_del_view[3]*dep_delay120[i]
-                  arr_del_ratio[i] = arr_delays[i]/flights[i]
-                  dep_del_ratio[i] = dep_delays[i]/flights[i]
+                  arr_del_ratio[i] = arr_delays[i]/flights[i]*100
+                  dep_del_ratio[i] = dep_delays[i]/flights[i]*100
                 }
 
                 box1_yScale.domain([d3.min([d3.min(arr_delays),d3.min(dep_delays)]) ,d3.max([d3.max(arr_delays),d3.max(dep_delays)])])
@@ -494,8 +494,8 @@ d3.json("us-states.json", function(json) {
                 for (i = 0; i < arr_delays.length; i++){
                   arr_delays[i] = arr_del_view[0]*arr_delay30[i] + arr_del_view[1]*arr_delay60[i] + arr_del_view[2]*arr_delay90[i] + arr_del_view[3]*arr_delay120[i]
                   dep_delays[i] = dep_del_view[0]*dep_delay30[i] + dep_del_view[1]*dep_delay60[i] + dep_del_view[2]*dep_delay90[i] + dep_del_view[3]*dep_delay120[i]
-                  arr_del_ratio[i] = arr_delays[i]/flights[i]
-                  dep_del_ratio[i] = dep_delays[i]/flights[i]
+                  arr_del_ratio[i] = arr_delays[i]/flights[i]*100
+                  dep_del_ratio[i] = dep_delays[i]/flights[i]*100
                 }
 
                 box1_yScale.domain([d3.min([d3.min(arr_delays),d3.min(dep_delays)]) ,d3.max([d3.max(arr_delays),d3.max(dep_delays)])])
@@ -598,7 +598,7 @@ d3.json("us-states.json", function(json) {
   						.attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
   						.attr("transform", "translate("+ (w_box1 - padding/1.5) +","+(h_box1/2)+")rotate(+90)")  // text is drawn off the screen top left, move down and out and rotate
   						.attr("font-size",12)
-  						.text("Ratio of Delays")
+  						.text("% of Delays")
   						.style("font-family","sans-serif");
 
             svg_box1.append("text")
@@ -691,8 +691,8 @@ d3.json("us-states.json", function(json) {
               for (i = 0; i < arr_delays.length; i++){
                 arr_delays[i] = arr_del_view[0]*arr_delay30[i] + arr_del_view[1]*arr_delay60[i] + arr_del_view[2]*arr_delay90[i] + arr_del_view[3]*arr_delay120[i]
                 dep_delays[i] = dep_del_view[0]*dep_delay30[i] + dep_del_view[1]*dep_delay60[i] + dep_del_view[2]*dep_delay90[i] + dep_del_view[3]*dep_delay120[i]
-                arr_del_ratio[i] = arr_delays[i]/flights[i]
-                dep_del_ratio[i] = dep_delays[i]/flights[i]
+                arr_del_ratio[i] = arr_delays[i]/flights[i]*100
+                dep_del_ratio[i] = dep_delays[i]/flights[i]*100
               }
 
               box1_yScale.domain([d3.min([d3.min(arr_delays),d3.min(dep_delays)]) ,d3.max([d3.max(arr_delays),d3.max(dep_delays)])])
@@ -857,8 +857,8 @@ d3.json("us-states.json", function(json) {
               for (i = 0; i < arr_delays.length; i++){
                 arr_delays[i] = arr_del_view[0]*arr_delay30[i] + arr_del_view[1]*arr_delay60[i] + arr_del_view[2]*arr_delay90[i] + arr_del_view[3]*arr_delay120[i]
                 dep_delays[i] = dep_del_view[0]*dep_delay30[i] + dep_del_view[1]*dep_delay60[i] + dep_del_view[2]*dep_delay90[i] + dep_del_view[3]*dep_delay120[i]
-                arr_del_ratio[i] = arr_delays[i]/flights[i]
-                dep_del_ratio[i] = dep_delays[i]/flights[i]
+                arr_del_ratio[i] = arr_delays[i]/flights[i]*100
+                dep_del_ratio[i] = dep_delays[i]/flights[i]*100
               }
 
               box1_yScale.domain([d3.min([d3.min(arr_delays),d3.min(dep_delays)]) ,d3.max([d3.max(arr_delays),d3.max(dep_delays)])])
@@ -1007,8 +1007,8 @@ d3.json("us-states.json", function(json) {
                    for (i = 0; i < arr_delays.length; i++){
                      arr_delays[i] = arr_del_view[0]*arr_delay30[i] + arr_del_view[1]*arr_delay60[i] + arr_del_view[2]*arr_delay90[i] + arr_del_view[3]*arr_delay120[i]
                      dep_delays[i] = dep_del_view[0]*dep_delay30[i] + dep_del_view[1]*dep_delay60[i] + dep_del_view[2]*dep_delay90[i] + dep_del_view[3]*dep_delay120[i]
-                     arr_del_ratio[i] = arr_delays[i]/flights[i]
-                     dep_del_ratio[i] = dep_delays[i]/flights[i]
+                     arr_del_ratio[i] = arr_delays[i]/flights[i]*100
+                     dep_del_ratio[i] = dep_delays[i]/flights[i]*100
                    }
 
                    box1_yScale.domain([d3.min([d3.min(arr_delays),d3.min(dep_delays)]) ,d3.max([d3.max(arr_delays),d3.max(dep_delays)])])
