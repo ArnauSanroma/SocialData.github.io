@@ -258,9 +258,25 @@ d3.json("us-states.json", function(json) {
             reversed_connection = connection.slice(-3) + "-" + connection.slice(0,3)
             one_way_connections_dataset.push({"connection":one_way_connections[i],"flights":connection_dataset[connection] + connection_dataset[reversed_connection]})
           }
-
-          airport_scale.domain([0,d3.max(Object.values(flight_dataset))])
-          thick_scale.domain([d3.min(Object.values(connection_dataset)),d3.max(Object.values(connection_dataset))])
+          
+          max_flight_dataset = 0
+          for (var key in flight_dataset) {
+            if (flight_dataset[key] > max_flight_dataset) {
+              max_flight_dataset = flight_dataset[key]
+            }
+          }
+          max_connection_dataset = 0
+          min_connection_dataset = 1000000
+          for (var key connection_dataset) {
+            if (connection_dataset[key] > max_connection_dataset) {
+              max_connection_dataset = connection_dataset[key]
+            }
+            if (connection_dataset[key] < min_connection_dataset) {
+              min_connection_dataset = connection_dataset[key]
+            }
+          }
+          airport_scale.domain([0,max_flight_dataset])
+          thick_scale.domain([min_connection_dataset,max_connection_dataset])
 
           svg_map.selectAll("path")
              .data(json.features)
