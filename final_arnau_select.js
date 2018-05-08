@@ -929,7 +929,7 @@ d3.json("us-states.json", function(json) {
 
             //Define line generator
             timeline = d3.line()
-                  .x(function(d) { return timeline_xScale(new Date(d.date))+2*padding; })
+                  .x(function(d) { return timeline_xScale(new Date(d.date.slice(0,10)))+2*padding; })
                   .y(function(d) { return timeline_yScale(d.flights); });
 
             //Create line
