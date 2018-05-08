@@ -267,7 +267,7 @@ d3.json("us-states.json", function(json) {
           }
           max_connection_dataset = 0
           min_connection_dataset = 1000000
-          for (var key connection_dataset) {
+          for (var key in connection_dataset) {
             if (connection_dataset[key] > max_connection_dataset) {
               max_connection_dataset = connection_dataset[key]
             }
