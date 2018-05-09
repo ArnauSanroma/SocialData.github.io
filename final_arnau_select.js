@@ -93,9 +93,8 @@ document.getElementById("legend1").setAttribute("class", "legend_arr")
 document.getElementById("legend2").setAttribute("class", "legend_dep")
 
 placeEl("select_all",window.parent.document.getElementById("box2").offsetLeft ,window.parent.document.getElementById("box2").offsetTop)
-placeEl("reset",window.parent.document.getElementById("select_all").offsetLeft + window.parent.document.getElementById("select_all").offsetWidth+5,window.parent.document.getElementById("box2").offsetTop)
-//placeEl("reset",window.parent.document.getElementById("box2").offsetLeft + w_box2/4,window.parent.document.getElementById("box2").offsetTop)
-placeEl("apply",window.parent.document.getElementById("box2").offsetLeft + 1.7*w_box2/4,window.parent.document.getElementById("box2").offsetTop)
+placeEl("reset",window.parent.document.getElementById("select_all").offsetLeft + window.parent.document.getElementById("select_all").offsetWidth+10,window.parent.document.getElementById("box2").offsetTop)
+placeEl("apply",window.parent.document.getElementById("reset").offsetLeft + window.parent.document.getElementById("reset").offsetWidth+10,window.parent.document.getElementById("box2").offsetTop)
 
 placeEl("legend1",window.parent.document.getElementById("box1").offsetLeft+60,window.parent.document.getElementById("box1").offsetTop+padding)
 placeEl("legend2",window.parent.document.getElementById("box1").offsetLeft+60,window.parent.document.getElementById("box1").offsetTop+2*padding)
