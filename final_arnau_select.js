@@ -643,7 +643,7 @@ d3.json("us-states.json", function(json) {
 
 
               ratio = d3.line()
-                    .x(function(d,i) { return box1_xScale(i) + padding; })
+                    .x(function(d,i) { return box1_xScale(i) + padding + box1_xScale.bandwidth()/2; })
                     .y(function(d) { return box1_yScale_right(d) - padding; });
 
               //Create line
