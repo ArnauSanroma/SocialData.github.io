@@ -982,7 +982,7 @@ d3.json("us-states.json", function(json) {
                    initial_index = connection_data.map(function(e) { return e.Date; }).indexOf(initial_string)
                    final_index = connection_data.map(function(e) { return e.Date; }).indexOf(final_string)
                    initial_index2 = airport_data.map(function(e) { return e.Date; }).indexOf(initial_string)
-                   final_index2 = airport_data.map(function(e) { return e.Date; }).indexOf(final_string)
+                   final_index2 = airport_data.map(function(e) { return e.Date; }).indexOf(final_string.slice(0,11) + "23:00:00")
 
                    for (i = 0; i < airports.length; i++) {
                      flight_dataset[airports[i]] = d3.sum(airport_data.slice(initial_index2,final_index2),function(d){
