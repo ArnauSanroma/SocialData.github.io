@@ -961,8 +961,6 @@ d3.json("us-states.json", function(json) {
                    var brush_coords = d3.brushSelection(this);
                    initial_date= new Date (timeline_xScale.invert(brush_coords[0]-2*padding))
                    final_date= new Date (timeline_xScale.invert(brush_coords[1]-2*padding))
-                   console.log(initial_date)
-                   console.log(final_date)
                    initial_day = initial_date.getDate()
                    initial_month = initial_date.getMonth() + 1
                    final_day = final_date.getDate()
